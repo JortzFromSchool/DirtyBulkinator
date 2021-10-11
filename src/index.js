@@ -2,7 +2,9 @@ import Calculator from './scripts/calculator';
 //const Calculator = require("./scripts/calculator");
 document.addEventListener('DOMContentLoaded', () => {
     const goalsForm = document.querySelector('.goals-form');
-    const calculator = new Calculator(goalsForm);
+    console.log("DOM Content Loaded");
+    console.log(goalsForm);
+    new Calculator(goalsForm);
 });
 
 // const apiRequest = (query = 'curry') => {

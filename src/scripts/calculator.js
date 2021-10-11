@@ -2,6 +2,7 @@
 
 class Calculator {
     constructor(goalsForm){
+        console.log(this);
         this.goalsForm = goalsForm;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.bindEvents();
@@ -14,6 +15,7 @@ class Calculator {
         const weightInput = document.querySelector('input[name="weight"]');
         const heightInput = document.querySelector('input[name="height"]');
         const ageInput = document.querySelector('input[name="age"]');
+        console.log(this);
         e.preventDefault();
         this.calculateMacros(sexInput.value, goalInput.value, activityInput.value, weightInput.value, heightInput.value, ageInput.value);
     }
@@ -29,7 +31,7 @@ class Calculator {
     }
     
     bindEvents() {
-        this.goalsForm.addEventListener('submit', handleSubmit);
+        this.goalsForm.addEventListener('submit', this.handleSubmit);
     }
 }
 
