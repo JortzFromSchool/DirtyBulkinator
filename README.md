@@ -19,6 +19,10 @@ Technologies, Libraries, APIs
 - potentially EDAMAM Nutrition Analysis API(https://developer.edamam.com/edamam-docs-nutrition-api)
 - if not, jontonsoup4's Taco Bell as a service API (https://github.com/jontonsoup4/taco-bell-as-a-service)
 
+Wireframe:
+![image](https://user-images.githubusercontent.com/8568443/136479826-a859825f-abef-4c49-9dd8-d2e23e3e9573.png)
+
+
 Implementation Timeline
 - Friday/Weekend: Settle on a functional API, build input fields for macros and default levels based on weight and diet goals
 - Monday: d3 chart implementation, loading menu item values using DOM Manipulation
