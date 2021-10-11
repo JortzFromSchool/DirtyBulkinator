@@ -1,0 +1,46 @@
+{
+  "name": "fast_food_macros",
+  "version": "1.0.0",
+  "description": "Background",
+  "main": "index.js",
+  "browserslist": [
+    "defaults"
+  ],
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start:debug": "node --inspect app.js", 
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JortzFromSchool/FastFoodMacros.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JortzFromSchool/FastFoodMacros/issues"
+  },
+  "homepage": "https://github.com/JortzFromSchool/FastFoodMacros#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.18.2",
+    "css-loader": "^6.3.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mini-css-extract-plugin": "^2.4.2",
+    "node-fetch": "^3.0.0",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  },
+  "devDependencies": {}
+}
