@@ -22,11 +22,12 @@ app.listen(PORT, () => {
   console.log(`Listening at localhost:${PORT}`);
 });
 
-app.get('/api/nutrition-data', (request, response) => {
-    const urlStart = 'https://api.edamam.com/api/nutrition-data';
-    const api_key = process.env.app_key; // from .env (dev) or Heroku
-    const searchTerm = request.query.searchTerm; // from query string
-    const url = `${urlStart}/${api_key}/search.php?s=${searchTerm}`;
+app.get('/api/food', (request, response) => {
+    const urlStart = 'https://api.edamam.com/api/food-database/v2/parser';
+    const app_key = process.env.APP_KEY; // from .env (dev) or Heroku
+    const app_id = process.env.APP_ID; // from .env (dev) or Heroku
+    const ingr = request.query.searchTerm; // from query string
+    const url = `${urlStart}?app_id=${app_id}&app_key=${app_key}&ingr=${ingr}`;
   
     console.log(`Fetching: ${url}`);
   
