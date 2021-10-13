@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const goalsForm = document.querySelector('.goals-form');
     // console.log("DOM Content Loaded");
     // console.log(goalsForm);
-    new Calculator(goalsForm);
+    const calculator = new Calculator(goalsForm);
     const foods = new Foods();
-    const chart = new Chart(foods);
+    const chart = new Chart(foods, calculator);
+    foods.loadChart(chart);
 });
 
 

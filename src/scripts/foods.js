@@ -1,5 +1,6 @@
 class Foods {
     constructor () {
+        this.handleReset = this.handleReset.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.baconatorObject = this.baconatorRequest();
         this.foodsObject = this.apiRequest("Wendy's");
@@ -10,6 +11,7 @@ class Foods {
         setTimeout(() => {
             // console.log(this.foodsObject);
             this.addItems(this.foodsObject);
+            this.addReset();
         }, 500);
         this.meals = [];
     }
@@ -54,12 +56,14 @@ class Foods {
         for(let i = 0; i < 13; i++){
             if(i === 8) {continue;} //skip iced tea
             const newLi = document.createElement('li');
+            const newButton = document.createElement('button');
             // const calsLi = document.createElement('li');
             // calsLi.innerText = foods[i]['food']['nutrients']['ENERC_KCAL'];
             // calsLi.innerText += " calories";
-            newLi.innerText = foods[i]['food']['label'];
-            newLi.addEventListener("click", this.handleClick);
-            // newLi.append(calsLi);
+            newButton.innerText = foods[i]['food']['label'];
+            newButton.addEventListener("click", this.handleClick);
+            // newButton.append(calsLi);
+            newLi.append(newButton);
             mealUl.append(newLi);
 
             //build object for instance variable
@@ -74,18 +78,30 @@ class Foods {
         };
     };
 
+    addReset() {
+        const mealUl = document.querySelector('ul.meal-list');
+        const newLi = document.createElement('li');
+        const newButton = document.createElement('button');
+        newButton.innerText = "Reset";
+        newButton.addEventListener("click", this.handleReset);
+        newLi.append(newButton);
+        mealUl.append(newLi);
+    }
+
     addBaconator(baconator) {
         // console.log("in addBaconator");
         // console.log(baconator);
         const mealUl = document.querySelector('ul.meal-list');
         const newLi = document.createElement('li');
+        const newButton = document.createElement('button');
         // const calsLi = document.createElement('li');
         // calsLi.innerText = baconator['calories'];
         // calsLi.innerText += " calories";
-        newLi.innerText = baconator['name'];
-        newLi.addEventListener("click", this.handleClick);
+        newButton.innerText = baconator['name'];
+        newButton.addEventListener("click", this.handleClick);
         // newLi.append(calsLi);
         mealUl.append(newLi);
+        newLi.append(newButton);
         this.meals.push(baconator);
     };
 
@@ -97,7 +113,23 @@ class Foods {
                 // console.log(this.meals[i]['quantity']);
             };
         };
+        if (this.chart) {
+            this.chart.update();
+        };
     };
+
+    handleReset(e){
+        for(let i = 0; i < this.meals.length; i++){
+            this.meals[i]['quantity'] = 0;
+        };
+        if (this.chart) {
+            this.chart.update();
+        };
+    }
+
+    loadChart(chart) {
+        this.chart = chart;
+    }
 
 }
 

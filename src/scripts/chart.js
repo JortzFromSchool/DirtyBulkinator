@@ -1,10 +1,11 @@
 var d3 = require("d3");
 
 class Chart {
-    constructor(foods){
+    constructor(foods, calculator){
         this.handleClick = this.handleClick.bind(this);
         setTimeout(() => {
             this.foodsObject = foods;
+            this.calculator = calculator;
             this.createChart();
         }, 500);
     };
@@ -26,10 +27,14 @@ class Chart {
         g.attr("class", "graph");
             
         var data = this.createDataFromFoods();
-        console.log(data);
+        var macros = this.calculator.macros();
+        //var yScaleBound = d3.max(macros, function(d) {return d;});
+        console.log(macros);
         // need data for these lines
         xScale.domain(data.map(function(d) { return d.name; }));
-        yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+        //yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+        yScale.domain([0, d3.max(macros, function(d) { return d; })]);
+        //yScale.domain([0, yScaleBound]);
     
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -60,6 +65,12 @@ class Chart {
     };
 
     handleClick(e){
+        const el = document.querySelector('.graph');
+        el.remove();
+        this.createChart();
+    };
+
+    update(){
         const el = document.querySelector('.graph');
         el.remove();
         this.createChart();

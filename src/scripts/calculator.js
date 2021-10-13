@@ -122,6 +122,17 @@ class Calculator {
         carbsMaintenanceLi.innerText = `Carbohydrates (maintenance): ${this.carbsMaintenance} grams/day`;
         carbsLossLi.innerText = `Carbohydrates (loss): ${this.carbsLoss} grams/day`;
     }
+
+    macros(){
+        const goalInput = document.querySelector('input[name="goal"]');
+        if(goalInput.value === "weight_gain") {
+            return [this.protein, this.fat, this.carbsGain];
+        } else if (goalInput.value === "fat_loss") {
+            return [this.protein, this.fat, this.carbsLoss];
+        } else {
+            return [this.protein, this.fat, this.carbsMaintenance];
+        };
+    }
     
     bindEvents() {
         this.goalsForm.addEventListener('submit', this.handleSubmit);
