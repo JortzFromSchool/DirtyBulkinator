@@ -15,9 +15,6 @@ class Chart {
         margin = 200,
         width = svg.attr("width") - margin,
         height = svg.attr("height") - margin;
-        //console.log(svg);
-        
-
 
         var xScale = d3.scaleBand().range ([0, width]).padding(0.4),
             yScale = d3.scaleLinear().range ([height, 0]);
@@ -28,13 +25,9 @@ class Chart {
             
         var data = this.createDataFromFoods();
         var macros = this.calculator.macros();
-        //var yScaleBound = d3.max(macros, function(d) {return d;});
-        // console.log(macros);
-        // need data for these lines
+
         xScale.domain(data.map(function(d) { return d.name; }));
-        //yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
         yScale.domain([0, d3.max(macros, function(d) { return d; })]);
-        //yScale.domain([0, yScaleBound]);
     
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -79,14 +72,19 @@ class Chart {
     createDataFromFoods() {
         let result = [];
         let arr = this.foodsObject.meals;
+
+        //pull values from foods data, assemble into parsable array of hashes
         let protein = {name: 'protein', value: 0};
         let fat = {name: 'fat', value: 0};
         let calories = {name: 'carbohydrates', value: 0};
+
+        // totals for display on graph
         for(let i = 0; i < arr.length; i++){
             protein['value'] += (arr[i]['protein'] * arr[i]['quantity']);
             fat['value'] += (arr[i]['fat'] * arr[i]['quantity']);
             calories['value'] += (arr[i]['carbohydrates'] * arr[i]['quantity']);
         };
+
         result.push(protein);
         result.push(fat);
         result.push(calories);
