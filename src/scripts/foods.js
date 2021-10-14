@@ -26,7 +26,7 @@ class Foods {
           .then(res => res.json())
           .then(data => {
             this.foodsObject = data["hints"]
-            console.log(this.foodsObject);
+            //console.log(this.foodsObject);
           });
     };
 
@@ -116,6 +116,28 @@ class Foods {
         if (this.chart) {
             this.chart.update();
         };
+        this.addMealPlan();
+    };
+
+    addMealPlan(){
+        //wipe previous meal plan
+        const mealPlanUl = document.querySelector('ul.meal-plan-list');
+        mealPlanUl.remove();
+
+        //create new meal plan list
+        const newUl = document.createElement('ul');
+        newUl.setAttribute('class','meal-plan-list');
+        for(let i = 0; i < this.meals.length; i++) {
+            if (this.meals[i]['quantity'] > 0) {
+                const newLi = document.createElement('li');
+                newLi.innerText = this.meals[i]["name"] + " x " + this.meals[i]['quantity'].toString();
+                newUl.append(newLi);
+            };
+        };
+
+        //append to html section
+        const mealPlanSection = document.querySelector('.meal-plan');
+        mealPlanSection.append(newUl);
     };
 
     handleReset(e){
@@ -125,6 +147,7 @@ class Foods {
         if (this.chart) {
             this.chart.update();
         };
+        this.addMealPlan();
     }
 
     loadChart(chart) {

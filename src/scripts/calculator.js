@@ -12,7 +12,7 @@ class Calculator {
         this.carbsMaintenance = 0; //grams
         this.carbsLoss = 0; //grams
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
         this.generateCalories = this.generateCalories.bind(this);
         this.generateMacros = this.generateMacros.bind(this);
         this.bindEvents();
@@ -20,9 +20,9 @@ class Calculator {
 
     handleSubmit(e) {
         e.preventDefault();
-        const sexInput = document.querySelector('input[name="sex"]');
+        const sexInput = document.querySelector('select[name="formula"]');
         // const goalInput = document.querySelector('input[name="goal"]');
-        const activityInput = document.querySelector('input[name="activity-level"]');
+        const activityInput = document.querySelector('select[name="activity-level"]');
         const weightInput = document.querySelector('input[name="weight"]');
         const heightInput = document.querySelector('input[name="height"]');
         const ageInput = document.querySelector('input[name="age"]');    
@@ -32,16 +32,16 @@ class Calculator {
         this.generateMacros(weightInput.value);
     }
 
-    handleClick(e) {
-        const el = e.target;
-        //console.log(`el=${el}`);
-        if (el.type === "radio") {
-            let input = document.querySelector(`input[name="${el.name}"]`);
-            input.value = el.value;
-            //console.log(`el.value=${el.value}`);
-            //console.log(`input.value=${input.value}`);
-        };
-    }
+    // handleClick(e) {
+    //     const el = e.target;
+    //     console.log(`el=${el}`);
+    //     if (el.type === "radio") {
+    //         let input = document.querySelector(`input[name="${el.name}"]`);
+    //         input.value = el.value;
+    //     //     //console.log(`el.value=${el.value}`);
+    //     //     //console.log(`input.value=${input.value}`);
+    //     };
+    // }
 
     calculateBMR(sex, activity, weight, height, age) {
     //needs to manipulate the values already on the page. Make them inputs?
@@ -56,7 +56,7 @@ class Calculator {
         } else {
             bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
         };
-        console.log(bmr);
+        // console.log(bmr);
         switch(activity){
             case "sedentary":
                 bmr = bmr * 1.2;
@@ -124,10 +124,10 @@ class Calculator {
     }
 
     macros(){
-        const goalInput = document.querySelector('input[name="goal"]');
-        if(goalInput.value === "weight_gain") {
+        const goalInput = document.querySelector('select[name="goal"]');
+        if(goalInput.value === "weight-gain") {
             return [this.protein, this.fat, this.carbsGain];
-        } else if (goalInput.value === "fat_loss") {
+        } else if (goalInput.value === "fat-loss") {
             return [this.protein, this.fat, this.carbsLoss];
         } else {
             return [this.protein, this.fat, this.carbsMaintenance];
@@ -136,7 +136,7 @@ class Calculator {
     
     bindEvents() {
         this.goalsForm.addEventListener('submit', this.handleSubmit);
-        this.goalsForm.addEventListener('click', this.handleClick);
+        // this.goalsForm.addEventListener('click', this.handleClick);
     }
 }
 

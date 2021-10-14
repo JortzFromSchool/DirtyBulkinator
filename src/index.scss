@@ -1,0 +1,51 @@
+.logo {
+    padding-top: 50px;
+}
+
+.buff-wendy-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: #bb252d;
+}
+
+h1 {
+    color: #bb252d;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.meals-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.meal-options {
+    font-weight: bold;
+}
+
+.TDEE {
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}

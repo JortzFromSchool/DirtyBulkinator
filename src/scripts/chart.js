@@ -29,7 +29,7 @@ class Chart {
         var data = this.createDataFromFoods();
         var macros = this.calculator.macros();
         //var yScaleBound = d3.max(macros, function(d) {return d;});
-        console.log(macros);
+        // console.log(macros);
         // need data for these lines
         xScale.domain(data.map(function(d) { return d.name; }));
         //yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
