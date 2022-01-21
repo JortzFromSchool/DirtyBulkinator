@@ -6,6 +6,7 @@ class Chart {
         setTimeout(() => {
             this.foodsObject = foods;
             this.calculator = calculator;
+            this.initialHeight = 0;
             this.createChart();
         }, 500);
     };
@@ -27,7 +28,12 @@ class Chart {
         var macros = this.calculator.macros();
 
         xScale.domain(data.map(function(d) { return d.name; }));
-        yScale.domain([0, d3.max(macros, function(d) { return d; })]);
+        var yScaleMax = d3.max(macros, function(d) { return d; });
+        if (yScaleMax == 0) {
+            yScaleMax = 400;
+        };
+        console.log(yScaleMax);
+        yScale.domain([0, yScaleMax]);
     
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -48,9 +54,17 @@ class Chart {
          .enter().append("rect")
          .attr("class", "bar")
          .attr("x", function(d) { return xScale(d.name); })
-         .attr("y", function(d) { return yScale(d.value); })
+         .attr("y", function(d) { return yScale(0); })
          .attr("width", xScale.bandwidth())
-         .attr("height", function(d) { return height - yScale(d.value); });
+         .attr("height", function(d) { return height - yScale(0); });
+
+        svg.selectAll("rect")
+         .transition()
+         .duration(800)
+         .attr("y", function(d) { return yScale(d.value); })
+         .attr("height", function(d) { return height - yScale(d.value); })
+         .delay(function(d,i){console.log(i) ; return(i*100)});
+
 
         const el = document.querySelector('.bar-chart');
         el.addEventListener("click", this.handleClick);
@@ -61,6 +75,7 @@ class Chart {
         const el = document.querySelector('.graph');
         el.remove();
         this.createChart();
+        
     };
 
     update(){

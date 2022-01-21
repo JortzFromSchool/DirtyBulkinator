@@ -28,16 +28,36 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
 }
 
+.goals-form {
+    display: flex;
+    flex-direction: column;
+}
 
+.stat {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.calories {
+    display: flex;
+    flex-direction: column;
+}
+.TDEEoption {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
 .meals-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 .meal-options {
@@ -50,7 +70,19 @@ h1 {
     
 }
 
+.meal-plan-list > li {
+    padding: 5px;
+    font-weight: bold;
+}
+
 .ender-container {
     display: flex;
     justify-content: center;
+}
+
+button {
+    font-family : inherit;
+    font-size: 1em;
+    margin: 5px;
+    font-weight: bold;
 }
