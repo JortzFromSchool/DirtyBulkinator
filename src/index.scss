@@ -107,7 +107,13 @@ h1 {
 
 .ender-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.ender-content {
+    margin: 5px;
 }
 
 button {
