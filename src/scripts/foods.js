@@ -106,7 +106,35 @@ class Foods {
             this.chart.update();
         };
         this.addMealPlan();
+        this.addTotalMacros();
     };
+
+    addTotalMacros(){
+        const mealMacrosUl = document.querySelector('ul.meal-plan-macros-list');
+        const proteinLi = document.createElement('li');
+        const fatLi = document.createElement('li');
+        const carbsLi = document.createElement('li');
+
+        let proteing = 0;
+        let fatg = 0;
+        let carbsg = 0;
+
+        for(let i = 0; i< this.meals.length; i++){
+            if(this.meals[i]['quantity'] > 0){
+                proteing += this.meals[i]['protein'] * this.meals[i]['quantity'];
+                fatg += this.meals[i]['fat'] * this.meals[i]['quantity'];
+                carbsg += this.meals[i]['carbohydrates'] * this.meals[i]['quantity'];
+            }
+        }
+
+        proteinLi.innerText = `${proteing} grams`;
+        fatLi.innerText = `${fatg} grams`;
+        carbsLi.innerText = `${carbsg} grams`;
+
+        mealMacrosUl.append(proteinLi);
+        mealMacrosUl.append(fatLi);
+        mealMacrosUl.append(carbsLi);
+    }
 
     addMealPlan(){
         //wipe previous meal plan
