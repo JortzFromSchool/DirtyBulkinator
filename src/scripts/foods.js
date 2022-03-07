@@ -111,6 +111,11 @@ class Foods {
 
     addTotalMacros(){
         const mealMacrosUl = document.querySelector('ul.meal-plan-macros-list');
+        mealMacrosUl.remove();
+
+        const newUl = document.createElement('ul');
+        newUl.setAttribute('class','meal-plan-macros-list');
+
         const proteinLi = document.createElement('li');
         const fatLi = document.createElement('li');
         const carbsLi = document.createElement('li');
@@ -127,13 +132,16 @@ class Foods {
             }
         }
 
-        proteinLi.innerText = `${proteing} grams`;
-        fatLi.innerText = `${fatg} grams`;
-        carbsLi.innerText = `${carbsg} grams`;
+        proteinLi.innerText = `Protein: ${proteing} grams`;
+        fatLi.innerText = `Fat: ${fatg} grams`;
+        carbsLi.innerText = `Carbs: ${carbsg} grams`;
 
-        mealMacrosUl.append(proteinLi);
-        mealMacrosUl.append(fatLi);
-        mealMacrosUl.append(carbsLi);
+        newUl.append(proteinLi);
+        newUl.append(fatLi);
+        newUl.append(carbsLi);
+
+        const mealPlanMacrosSection = document.querySelector('.meal-plan-macros');
+        mealPlanMacrosSection.append(newUl);
     }
 
     addMealPlan(){
