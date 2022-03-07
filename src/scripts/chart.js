@@ -32,7 +32,6 @@ class Chart {
         if (yScaleMax == 0) {
             yScaleMax = 400;
         };
-        console.log(yScaleMax);
         yScale.domain([0, yScaleMax]);
     
         g.append("g")
@@ -63,7 +62,7 @@ class Chart {
          .duration(800)
          .attr("y", function(d) { return yScale(d.value); })
          .attr("height", function(d) { return height - yScale(d.value); })
-         .delay(function(d,i){console.log(i) ; return(i*100)});
+         .delay(function(d,i){return(i*100)});
 
 
         const el = document.querySelector('.bar-chart');
