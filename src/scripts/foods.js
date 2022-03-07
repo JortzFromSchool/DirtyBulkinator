@@ -56,6 +56,7 @@ class Foods {
 
             newButton.innerText = foods[i]['food']['label'];
             newButton.addEventListener("click", this.handleClick);
+            newButton.setAttribute('class','meal-plan-item');
             
             newLi.append(newButton);
             mealUl.append(newLi);
@@ -78,6 +79,7 @@ class Foods {
         const newButton = document.createElement('button');
         newButton.innerText = "Reset";
         newButton.addEventListener("click", this.handleReset);
+        newButton.setAttribute('class','meal-plan-item');
         newLi.append(newButton);
         mealUl.append(newLi);
     }
@@ -89,6 +91,7 @@ class Foods {
         
         newButton.innerText = baconator['name'];
         newButton.addEventListener("click", this.handleClick);
+        newButton.setAttribute('class','meal-plan-item');
         
         mealUl.append(newLi);
         newLi.append(newButton);
