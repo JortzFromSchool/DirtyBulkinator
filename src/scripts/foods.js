@@ -6,11 +6,11 @@ class Foods {
         this.foodsObject = this.apiRequest("Wendy's");
         setTimeout(() => {
             this.addBaconator(this.baconatorObject);
-        }, 500);
+        }, 1000);
         setTimeout(() => {
             this.addItems(this.foodsObject);
             this.addReset();
-        }, 500);
+        }, 1000);
         this.meals = [];
     }
 

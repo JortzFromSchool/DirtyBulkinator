@@ -71,7 +71,7 @@ h1 {
 }
 
 .macronutrients {
-  width: 250px;
+  width: 400px;
 }
 
 .meals-container {
@@ -109,10 +109,33 @@ h1 {
   outline: none;
 }
 
+.calculate-button {
+  margin-top: 5px;
+  background: rgba(187, 37, 45, 0.5);
+  border-radius: 3%;
+  border: solid #bb252d;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.calculate-button:hover {
+  background: #bb252d;
+}
+
+.calculate-button:active {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
 .TDEE {
   padding-left: 50px;
   padding-right: 50px;
-  width: 200px;
+  width: 300px;
 }
 
 .meal-plan-stats {
