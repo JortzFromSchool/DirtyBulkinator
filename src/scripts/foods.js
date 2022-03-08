@@ -2,16 +2,9 @@ class Foods {
     constructor () {
         this.handleReset = this.handleReset.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.baconatorObject = this.baconatorRequest();
-        this.foodsObject = this.apiRequest("Wendy's");
-        setTimeout(() => {
-            this.addBaconator(this.baconatorObject);
-        }, 1000);
-        setTimeout(() => {
-            this.addItems(this.foodsObject);
-            this.addReset();
-        }, 1000);
         this.meals = [];
+        this.baconatorRequest();
+        
     }
 
     apiRequest(query) {
@@ -24,7 +17,9 @@ class Foods {
           .then(res => res.json())
           .then(data => {
             this.foodsObject = data["hints"];
-          });
+          })
+          .then(() => {this.addItems(this.foodsObject);
+                        this.addReset();});
     };
 
     baconatorRequest(query = 'baconator') {
@@ -44,7 +39,9 @@ class Foods {
             baconator['quantity'] = 0;
 
             this.baconatorObject = baconator;
-          });
+          })
+          .then(() => this.addBaconator(this.baconatorObject))
+          .then(() => (this.apiRequest("Wendy's")));
     };
 
     addItems(foods) {
