@@ -30,7 +30,7 @@ class Calculator {
     }
 
     calculateBMR(sex, activity, weight, height, age) {
-    //needs to manipulate the values already on the page. Make them inputs?
+
         let bmr = 0;
         if (sex === "masc"){
             bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
