@@ -13,7 +13,7 @@ This project serves to help users calculate personal macronutrient levels for va
 
 
 **Technologies, Libraries, APIs**
-- d3 ris used for data visualization
+- d3 is used for data visualization
 - EDAMAM Nutrition Analysis API(https://developer.edamam.com/edamam-docs-nutrition-api) is the source for the nutrition facts of the Wendy's items.
 - webpack is used to bundle files for the browser.
 - Javascript is used for everything else.
